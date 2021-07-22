@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    tools:context=".Login">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="用户id :"
+        android:textColor="@color/black"/>
+    <EditText
+        android:id="@+id/_id1"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="@color/black"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="用户名 :"
+            android:textColor="@color/black"/>
+        <EditText
+            android:id="@+id/_name1"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="登录"/>
+</androidx.appcompat.widget.LinearLayoutCompat>
