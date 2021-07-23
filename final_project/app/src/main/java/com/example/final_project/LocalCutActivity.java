@@ -57,6 +57,9 @@ public class LocalCutActivity extends AppCompatActivity {
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(this,videouri);
         video.setVideoURI(videouri);
+        video.seekTo(0);
+        bitmap = mmr.getFrameAtTime(0,MediaMetadataRetriever.OPTION_CLOSEST);
+        image.setImageBitmap(bitmap);
         Fresco.initialize(this);
         seekBar = findViewById(R.id.sb_local_select);
         video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {

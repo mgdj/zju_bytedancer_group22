@@ -58,7 +58,9 @@ public class CutActivity extends AppCompatActivity {
         mmr.setDataSource(path);
         videouri = PathUtils.getUriForFile(this,path);
         video.setVideoURI(videouri);
-        video.start();
+        video.seekTo(0);
+        bitmap = mmr.getFrameAtTime(0,MediaMetadataRetriever.OPTION_CLOSEST);
+        image.setImageBitmap(bitmap);
         Fresco.initialize(this);
         seekBar = findViewById(R.id.sb_select);
         video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {

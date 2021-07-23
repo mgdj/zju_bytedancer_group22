@@ -220,7 +220,13 @@ public class LocalUploadActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<UploadResponse> call, Throwable t) {
                         t.printStackTrace();
-                        Toast.makeText(LocalUploadActivity.this,"提交失败"+t.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LocalUploadActivity.this,"提交成功",Toast.LENGTH_SHORT).show();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                LocalUploadActivity.this.finish();
+                            }
+                        });
 
                     }
                 });

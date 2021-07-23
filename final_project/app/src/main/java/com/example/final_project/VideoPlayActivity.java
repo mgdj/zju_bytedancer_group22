@@ -17,12 +17,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 import android.media.MediaPlayer;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.ldoublem.thumbUplib.ThumbUpView;
 import com.liji.circleimageview.CircleImageView;
 
 
 public class VideoPlayActivity extends AppCompatActivity {
     private GestureDetector mGestureDetector;
+    private LottieAnimationView lview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         String aut = intent.getStringExtra("sid");
         String uname = intent.getStringExtra("name");
         TextView vid =  findViewById(R.id._id);
+        lview = findViewById(R.id.animation_view);
         vid.setText(aut);
         TextView vuname = findViewById(R.id._username);
         vuname.setText(uname);
@@ -54,24 +58,32 @@ public class VideoPlayActivity extends AppCompatActivity {
         mThumbUpView.setCracksColor(Color.rgb(22, 33, 44));
         mThumbUpView.setEdgeColor(Color.rgb(33, 3, 219));
         //判断是否点赞
-        mThumbUpView.setOnThumbUp(new ThumbUpView.OnThumbUp() {
-            @Override
-            public void like(boolean like ) {
-                if (like == true) {
-                    Toast.makeText(VideoPlayActivity.this, "点赞", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(VideoPlayActivity.this, "取消点赞", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        mThumbUpView.UnLike();
+        videoView.setAlpha(0.0f);
+        mThumbUpView.setAlpha(0.0f);
+        vid.setAlpha(0.0f);
+        vuname.setAlpha(0.0f);
+        lview.setAlpha(1.0f);
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
+                lview.setAlpha(0.0f);
+                videoView.setAlpha(1.0f);
+                mThumbUpView.setAlpha(1.0f);
+                vid.setAlpha(1.0f);
+                vuname.setAlpha(1.0f);
                 mp.start();
                 mp.setLooping(true);
             }
         });
+        mThumbUpView.setOnThumbUp(new ThumbUpView.OnThumbUp() {
+            @Override
+            public void like(boolean like ) {
+                if (like == true) {
+                } else {
+                }
+            }
+        });
+        mThumbUpView.UnLike();
         //videoView.setMediaController(new MediaController(this));
         mGestureDetector = new GestureDetector(this,
                 new GestureDetector.SimpleOnGestureListener() {
@@ -103,7 +115,6 @@ public class VideoPlayActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         return mGestureDetector.onTouchEvent(event);

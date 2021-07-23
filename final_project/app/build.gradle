@@ -44,4 +44,10 @@ dependencies {
     implementation 'com.facebook.fresco:webpsupport:2.4.0'
     implementation 'com.ldoublem.thumbUplib:ThumbUplib:0.5'
     implementation 'liji.library.dev:circleimageview:0.1.0'
+    implementation 'com.airbnb.android:lottie:2.7.0'
+    implementation 'com.pes.materialcolorpicker:library:1.2.4'
+    // 这里添加了对话框库，用来输入时长
+    // https://github.com/afollestad/material-dialogs
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
 }

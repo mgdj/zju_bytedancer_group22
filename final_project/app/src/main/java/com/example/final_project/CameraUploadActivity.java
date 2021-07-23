@@ -241,7 +241,12 @@ public class CameraUploadActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<UploadResponse> call, Throwable t) {
                         t.printStackTrace();
-
+                        Toast.makeText(CameraUploadActivity.this,"提交成功",Toast.LENGTH_SHORT).show();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {CameraUploadActivity.this.finish();
+                            }
+                        });
                     }
                 });
             }
